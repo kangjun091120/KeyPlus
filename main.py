@@ -7,3 +7,5 @@ listener.start()
 
 with keyboard.Listener(on_press=on.press, on_release=on.release) as listener:
     listener.join()
+
+print("a")
