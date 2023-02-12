@@ -17,7 +17,7 @@ def scroll(x, y, dx, dy):
 
 def press(key):
     try:
-        print('alphanumeric key {0} pressed'.format(
+        print('al key {0} pressed'.format(
             key.char))
     except AttributeError:
         print('special key {0} pressed'.format(
