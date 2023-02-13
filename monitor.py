@@ -4,9 +4,13 @@ begin_time = time.perf_counter()
 event_data = []
 
 
+class Key(object):  # 创建Circle类
+    def __init__(self, r):  # 初始化一个属性r（不要忘记self参数，他是类下面所有方法必须的参数）
+        self.r = r
+
+
 def move(x, y):
-    print(str(time.perf_counter() - begin_time) + ' Pointer moved to {0}'.format(
-        (x, y)))
+    print([(time.perf_counter() - begin_time), (x, y)])
 
 
 def click(x, y, button, pressed):
