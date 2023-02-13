@@ -17,35 +17,33 @@ Key = KeyObj()
 
 
 def move(x, y):
-    event_data.append([(time.perf_counter() - begin_time), [x, y], Key.move])
+    event_data.append([0, (time.perf_counter() - begin_time), [x, y], Key.move])
 
 
 def click(x, y, button, pressed):
     if pressed:
-        event_data.append([(time.perf_counter() - begin_time), [x, y, 0], Key.click])
+        event_data.append([0, (time.perf_counter() - begin_time), [x, y, 0], Key.click])
     else:
-        event_data.append([(time.perf_counter() - begin_time), [x, y, 1], Key.click])
+        event_data.append([0, (time.perf_counter() - begin_time), [x, y, 1], Key.click])
 
 
 def scroll(x, y, dx, dy):
     if dy < 0:
-        event_data.append([(time.perf_counter() - begin_time), [x, y, 0], Key.scroll])
+        event_data.append([0, (time.perf_counter() - begin_time), [x, y, 0], Key.scroll])
     else:
-        event_data.append([(time.perf_counter() - begin_time), [x, y, 1], Key.scroll])
+        event_data.append([0, (time.perf_counter() - begin_time), [x, y, 1], Key.scroll])
 
 
 def press(key):
+    event_data.append([1, (time.perf_counter() - begin_time), key, Key.press])
+
     try:
-        if key.char == 'w':
+        if key.char == "w":
             print(event_data)
             return False
-        else:
-            print(str(time.perf_counter() - begin_time) + ' al key {0} pressed'.format(key.char))
-    except AttributeError:
-        print(str(time.perf_counter() - begin_time) + ' special key {0} pressed'.format(
-            key))
+    except:
+        pass
 
 
 def release(key):
-    print(str(time.perf_counter() - begin_time) + ' {0} released'.format(
-        key))
+    event_data.append([1, (time.perf_counter() - begin_time), key, Key.press])
